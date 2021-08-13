@@ -6,13 +6,13 @@ namespace School
     public class Person
     {
         [Required]
-        public string Firstname { get; set; }
+        public string firstname { get; set; }
         [Required]
-        public string Middlename { get; set; }
+        public string middlename { get; set; }
         [Required]
-        public string Lastname { get; set; }
+        public string lastname { get; set; }
         [Required]
-        public string Phone { get; set; }
-        public string Note { get; set; }
+        public string phone { get; set; }
+        public string note { get; set; }
     }
 }

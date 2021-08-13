@@ -193,24 +193,26 @@
     ]
   },
   "packageFolders": {
-    "/home/vladimir/.nuget/packages/": {}
+    "C:\\Users\\cvetk\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/vladimir/Desktop/School/School.csproj",
+      "projectUniqueName": "C:\\Users\\cvetk\\Desktop\\school\\School.csproj",
       "projectName": "School",
-      "projectPath": "/home/vladimir/Desktop/School/School.csproj",
-      "packagesPath": "/home/vladimir/.nuget/packages/",
-      "outputPath": "/home/vladimir/Desktop/School/obj/",
+      "projectPath": "C:\\Users\\cvetk\\Desktop\\school\\School.csproj",
+      "packagesPath": "C:\\Users\\cvetk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\cvetk\\Desktop\\school\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/vladimir/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\cvetk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -252,7 +254,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

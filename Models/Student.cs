@@ -6,12 +6,13 @@ namespace School
     public class Student: Person
     {
         [Required]
-        public string UserId { get; set; }
+        public string userId { get; set; }
         [Required]
-        public string StudentId { get; set; }
+        public string studentId { get; set; }
         [Required]
-        public string Address { get; set; }
+        public string address { get; set; }
         [Required]
-        public Parent[] Parents {get; set;}
+        public Person parent {get; set;}
+        public Person[] parents {get; set;}
     }
 }
