@@ -4,9 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.IO;
 
 namespace School.Controllers
 {
@@ -29,8 +26,7 @@ namespace School.Controllers
         [HttpPost]
         public async Task<ActionResult<Student>> Post(Users users)
         {
-            var myJObject = JObject.Parse(users);
-            Console.Write(myJObject);
+            Console.Write(users);
             // CreateFile(users);
             return Ok(users);
         }
