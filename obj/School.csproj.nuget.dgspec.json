@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cvetk\\Desktop\\school\\School.csproj": {}
+    "C:\\Users\\cvetk\\OneDrive\\Desktop\\Work\\school\\School.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cvetk\\Desktop\\school\\School.csproj": {
+    "C:\\Users\\cvetk\\OneDrive\\Desktop\\Work\\school\\School.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cvetk\\Desktop\\school\\School.csproj",
+        "projectUniqueName": "C:\\Users\\cvetk\\OneDrive\\Desktop\\Work\\school\\School.csproj",
         "projectName": "School",
-        "projectPath": "C:\\Users\\cvetk\\Desktop\\school\\School.csproj",
+        "projectPath": "C:\\Users\\cvetk\\OneDrive\\Desktop\\Work\\school\\School.csproj",
         "packagesPath": "C:\\Users\\cvetk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cvetk\\Desktop\\school\\obj\\",
+        "outputPath": "C:\\Users\\cvetk\\OneDrive\\Desktop\\Work\\school\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cvetk\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[27.1.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
@@ -55,6 +59,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.8, 5.0.8]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -63,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
         }
       }
     }
