@@ -13,6 +13,5 @@ namespace School
         public string address { get; set; }
         [Required]
         public Person parent {get; set;}
-        public Person[] parents {get; set;}
     }
 }
