@@ -15,14 +15,14 @@ namespace School.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController : ControllerBase
+    public class PrivateScoolController : ControllerBase
     {
 
         [HttpGet]
-        public IEnumerable<Student> Get()
+        public IEnumerable<PrivateStudent> Get()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new Student
+            return Enumerable.Range(1, 5).Select(index => new PrivateStudent
             {
                 firstname = "Vladimir"
             })
@@ -30,7 +30,7 @@ namespace School.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Student>> Post(Users users)
+        public async Task<ActionResult<PrivateStudent>> Post(PrivateSchool users)
         {
             var Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 

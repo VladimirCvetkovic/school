@@ -3,9 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace School
 {
-    public class Users
+    public class PrivateSchool
+
     {
         [Required]
-        public Student[] users {get; set;}
+        public PrivateStudent[] users {get; set;}
     }
 }

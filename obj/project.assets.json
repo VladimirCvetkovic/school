@@ -225,26 +225,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cvetk\\.nuget\\packages\\": {}
+    "/home/vladimir/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cvetk\\OneDrive\\Desktop\\Work\\school\\School.csproj",
+      "projectUniqueName": "/home/vladimir/Desktop/School/School.csproj",
       "projectName": "School",
-      "projectPath": "C:\\Users\\cvetk\\OneDrive\\Desktop\\Work\\school\\School.csproj",
-      "packagesPath": "C:\\Users\\cvetk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cvetk\\OneDrive\\Desktop\\Work\\school\\obj\\",
+      "projectPath": "/home/vladimir/Desktop/School/School.csproj",
+      "packagesPath": "/home/vladimir/.nuget/packages/",
+      "outputPath": "/home/vladimir/Desktop/School/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\cvetk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/vladimir/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -282,12 +280,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.8, 5.0.8]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -296,7 +288,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
       }
     }
   }
