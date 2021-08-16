@@ -1,0 +1,43 @@
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System;
+
+namespace School.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class SchoolController : ControllerBase
+    {
+        AppService appService = new AppService();
+
+        [HttpPost]
+        public async Task<ActionResult<Student>> Post(School users)
+        {
+            await appService.SaveToFile(users);
+            return Ok(users);
+        }
+
+        [HttpPost("UploadFile")]
+        public async Task<IActionResult> Upload(IFormFile uploadFile)
+        {
+            using (var streamReader = new StreamReader(uploadFile.OpenReadStream()))
+            {
+                School ministrySchool = new School();
+                string[] rowData = streamReader.ReadToEnd().Split("\n");
+
+                for (int i = 0; i < rowData.Length; i++)
+                {
+                    ministrySchool.users[i].setData(rowData[i]);
+                }
+
+                await appService.SaveToFile(ministrySchool);
+                return Ok();
+            }
+
+        }
+
+    }
+}

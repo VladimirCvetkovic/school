@@ -8,11 +8,8 @@ namespace School
         [Required]
         public string firstname { get; set; }
         [Required]
-        public string middlename { get; set; }
-        [Required]
         public string lastname { get; set; }
         [Required]
         public string phone { get; set; }
-        public string note { get; set; }
     }
 }
