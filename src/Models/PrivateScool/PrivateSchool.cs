@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace School
 {
@@ -7,6 +8,6 @@ namespace School
 
     {
         [Required]
-        public PrivateStudent[] users {get; set;}
+        public List<PrivateStudent> users {get; set;}
     }
 }

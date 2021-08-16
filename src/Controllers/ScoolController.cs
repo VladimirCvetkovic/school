@@ -25,15 +25,16 @@ namespace School.Controllers
         {
             using (var streamReader = new StreamReader(uploadFile.OpenReadStream()))
             {
-                School ministrySchool = new School();
-                string[] rowData = streamReader.ReadToEnd().Split("\n");
-
+                School school = new School();
+                school.users = new List<Student>();
+                string[] rowData = streamReader.ReadToEnd().Split("\r\n");
                 for (int i = 0; i < rowData.Length; i++)
                 {
-                    ministrySchool.users[i].setData(rowData[i]);
+                    Student student = new Student();
+                    student.setData(rowData[i]);
+                    school.users.Add(student);
                 }
-
-                await appService.SaveToFile(ministrySchool);
+                await appService.SaveToFile(school);
                 return Ok();
             }
 
