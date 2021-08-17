@@ -27,7 +27,7 @@ namespace School.Controllers
             {
                 School school = new School();
                 school.users = new List<Student>();
-                string[] rowData = streamReader.ReadToEnd().Split("\r\n");
+                string[] rowData = streamReader.ReadToEnd().Split("\n");
                 for (int i = 0; i < rowData.Length; i++)
                 {
                     Student student = new Student();

@@ -17,7 +17,11 @@ namespace School
 
             using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, fileName)))
             {
-                string jsonString = JsonSerializer.Serialize(users);
+                var options = new JsonSerializerOptions()
+                {
+                    WriteIndented = true
+                };
+                string jsonString = JsonSerializer.Serialize(users,options);
                 await outputFile.WriteAsync(jsonString);
             }
         }
