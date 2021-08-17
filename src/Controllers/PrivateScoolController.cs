@@ -4,6 +4,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace School.Controllers
 {
@@ -31,7 +32,7 @@ namespace School.Controllers
                 for (int i = 1; i < rowData.Length; i++)
                 {
                     PrivateStudent student = new PrivateStudent();
-                    student.setData(rowData[i]);
+                    student.setData(rowData[0], rowData[i]);
                     school.users.Add(student);
                 }
                 await appService.SaveToFile(school);

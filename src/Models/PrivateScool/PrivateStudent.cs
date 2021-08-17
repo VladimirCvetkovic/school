@@ -10,8 +10,10 @@ namespace School
         [MinLength(1, ErrorMessage = "You must enter at least one parent.")]
         new public List<Person> parent {get; set;}
 
-        new public void setData(string rowData)
+        new public void setData(string header, string rowData)
         {
+            int ind = findHeaderIndex(header, "test");
+            // Console.Write();
             string[] data = rowData.Split(",");
 
             if (!dataValid(data, 14)) return;

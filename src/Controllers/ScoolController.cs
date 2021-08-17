@@ -28,10 +28,10 @@ namespace School.Controllers
                 School school = new School();
                 school.users = new List<Student>();
                 string[] rowData = streamReader.ReadToEnd().Split("\n");
-                for (int i = 0; i < rowData.Length; i++)
+                for (int i = 1; i < rowData.Length; i++)
                 {
                     Student student = new Student();
-                    student.setData(rowData[i]);
+                    student.setData(rowData[0], rowData[i]);
                     school.users.Add(student);
                 }
                 await appService.SaveToFile(school);

@@ -17,7 +17,7 @@ namespace School
         public Person parent { get; set; }
         public string note { get; set; }
 
-        public void setData(string rowData)
+        public void setData(string header, string rowData)
         {
             string[] data = rowData.Split(",");
             if(!dataValid(data, 11)) return;
@@ -42,6 +42,13 @@ namespace School
         {
             if (data.Length < maxLength) return false;
             return true;
+        }
+
+        public int findHeaderIndex(string header, string value){
+            string[] headers = header.ToLower().Split(",");
+            int headerIndex = Array.IndexOf(headers, value);
+            if (headerIndex<0) throw new InvalidOperationException("Can't find column with name: " + value);
+            else return headerIndex;
         }
     }
 }
