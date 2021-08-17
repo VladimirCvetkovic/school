@@ -27,8 +27,8 @@ namespace School.Controllers
             {
                 PrivateSchool school = new PrivateSchool();
                 school.users = new List<PrivateStudent>();
-                string[] rowData = streamReader.ReadToEnd().Split("\r\n");
-                for (int i = 0; i < rowData.Length; i++)
+                string[] rowData = streamReader.ReadToEnd().Split("\n");
+                for (int i = 1; i < rowData.Length; i++)
                 {
                     PrivateStudent student = new PrivateStudent();
                     student.setData(rowData[i]);

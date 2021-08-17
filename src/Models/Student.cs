@@ -20,7 +20,7 @@ namespace School
         public void setData(string rowData)
         {
             string[] data = rowData.Split(",");
-            if(!dataValid(data)) return;
+            if(!dataValid(data, 11)) return;
 
             this.userId = data[0];
             this.firstname = data[1];
@@ -38,9 +38,9 @@ namespace School
             this.parent = studentParent;
         }
 
-        public bool dataValid(string[] data)
+        public bool dataValid(string[] data, int maxLength)
         {
-            if (data.Length < 11) return false;
+            if (data.Length < maxLength) return false;
             return true;
         }
     }
