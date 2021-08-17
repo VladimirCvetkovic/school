@@ -10,7 +10,7 @@ namespace School
         public async Task SaveToFile(dynamic users)
         {
             var Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-            string docPath = Environment.CurrentDirectory + "\\output";
+            string docPath = Path.Combine(Environment.CurrentDirectory,"output");
             string fileName = Timestamp.ToString() + ".json";
 
             if (!Directory.Exists(docPath)) Directory.CreateDirectory(docPath);
