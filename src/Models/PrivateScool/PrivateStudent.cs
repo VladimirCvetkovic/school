@@ -12,36 +12,32 @@ namespace School
 
         new public void setData(string header, string rowData)
         {
-            int ind = findHeaderIndex(header, "test");
-            // Console.Write();
-            string[] data = rowData.Split(",");
-
-            if (!dataValid(data, 14)) return;
-            this.userId = data[0];
-            this.firstname = data[1];
-            this.middlename = data[2];  
-            this.lastname = data[3];
-            this.address = data[4];
-            this.studentId = data[5];
-            this.phone = data[6];
+            
+            this.userId = findItemByHeader(header, "test 1" , rowData);
+            this.firstname = findItemByHeader(header, "test 2", rowData);
+            this.middlename = findItemByHeader(header, "test 3", rowData);  
+            this.lastname = findItemByHeader(header, "test 4", rowData);
+            this.address = findItemByHeader(header, "test 5", rowData);
+            this.studentId = findItemByHeader(header, "test 6", rowData);
+            this.phone = findItemByHeader(header, "test 7", rowData);
 
             List<Person> listOfParents = new List<Person>();
 
             Person mother = new Person();
-            mother.firstname = data[7];
-            mother.lastname = data[8];
-            mother.phone = data[9];
+            mother.firstname = findItemByHeader(header, "test 8", rowData);
+            mother.lastname = findItemByHeader(header, "test 9", rowData);
+            mother.phone = findItemByHeader(header, "test 10", rowData);
             listOfParents.Add(mother);
 
             Person father = new Person();
-            father.firstname = data[10];
-            father.lastname = data[11];
-            father.phone = data[12];
+            father.firstname = findItemByHeader(header, "test 11", rowData);
+            father.lastname = findItemByHeader(header, "test 12", rowData);
+            father.phone = findItemByHeader(header, "test 13", rowData);
             listOfParents.Add(father);
 
             this.parent = listOfParents;  
 
-            this.note = data[13];  
+            this.note = findItemByHeader(header, "test 14", rowData);  
         }
     }
 }

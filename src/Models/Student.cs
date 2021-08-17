@@ -44,11 +44,12 @@ namespace School
             return true;
         }
 
-        public int findHeaderIndex(string header, string value){
-            string[] headers = header.ToLower().Split(",");
-            int headerIndex = Array.IndexOf(headers, value);
-            if (headerIndex<0) throw new InvalidOperationException("Can't find column with name: " + value);
-            else return headerIndex;
+        public string findItemByHeader(string headerNames, string header, string rowData){
+            string[] headers = headerNames.ToLower().Split(",");
+            string[] data = rowData.Split(",");
+            int headerIndex = Array.IndexOf(headers, header);
+            if (headerIndex<0) return null;
+            else return data[headerIndex];
         }
     }
 }
