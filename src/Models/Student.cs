@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace School
 {
@@ -17,39 +18,39 @@ namespace School
         public Person parent { get; set; }
         public string note { get; set; }
 
+        private string[] requieredFilds = {"USERID", "FIRSTNAME", "MIDDLENAME", "LASTNAME", "ADDRESS", "STUDENTID", "PHONE"};
+        private string[] requieredParentFilds = {"PARENTFIRSTNAME", "PARENTLASTNAME", "PARENTPHONE"};
+
         public void setData(string header, string rowData)
         {
-            string[] data = rowData.Split(",");
-            if(!dataValid(data, 11)) return;
+            this.errorReasons = new List<string>();
 
-            this.userId = data[0];
-            this.firstname = data[1];
-            this.middlename = data[2];
-            this.lastname = data[3];
-            this.address = data[4];
-            this.studentId = data[5];
-            this.phone = data[6];
-            this.note = data[10];
+            this.userId = findItemByHeader(header, "USERID" , rowData);
+            this.firstname = findItemByHeader(header, "FIRSTNAME", rowData);
+            this.middlename = findItemByHeader(header, "MIDDLENAME", rowData);  
+            this.lastname = findItemByHeader(header, "LASTNAME", rowData);
+            this.address = findItemByHeader(header, "ADDRESS", rowData);
+            this.studentId = findItemByHeader(header, "STUDENTID", rowData);
+            this.phone = findItemByHeader(header, "PHONE", rowData);
+            this.note = findItemByHeader(header, "NOTE", rowData);
 
             Person studentParent = new Person();
-            studentParent.firstname = data[7];
-            studentParent.lastname = data[8];
-            studentParent.phone = data[9];
+            studentParent.errorReasons = new List<string>();
+            studentParent.firstname = findItemByHeader(header, "PARENTFIRSTNAME", rowData);
+            studentParent.lastname = findItemByHeader(header, "PARENTLASTNAME", rowData);
+            studentParent.phone = findItemByHeader(header, "PARENTPHONE", rowData);
+            studentParent.setStudentErrorReasonsList(header, rowData, requieredParentFilds);
+
+            if (studentParent.errorReasons.Count > 0)
+            {
+                string errors = string.Join(",", studentParent.errorReasons.ToArray());
+                this.errorReasons.Add(errors);
+            }
             this.parent = studentParent;
+
+            setStudentErrorReasonsList(header, rowData, requieredFilds);
         }
 
-        public bool dataValid(string[] data, int maxLength)
-        {
-            if (data.Length < maxLength) return false;
-            return true;
-        }
-
-        public string findItemByHeader(string headerNames, string header, string rowData){
-            string[] headers = headerNames.ToLower().Split(",");
-            string[] data = rowData.Split(",");
-            int headerIndex = Array.IndexOf(headers, header);
-            if (headerIndex<0) return null;
-            else return data[headerIndex];
-        }
+        
     }
 }
