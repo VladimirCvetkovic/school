@@ -10,6 +10,9 @@ namespace School
         [MinLength(1, ErrorMessage = "You must enter at least one parent.")]
         new public List<Person> parent {get; set;}
 
+        private string[] requieredFilds = {"USERID","STUDENTFIRSTNAME","STUDENTMIDDLENAME","STUDENTLASTNAME","STUDENTADDRESS","STUDENTID","STUDENTPHONE"};
+        private string[] requieredMotherFilds = {"MOTHERFIRSTNAME","MOTHERLASTNAME","MOTHERPHONE"};
+        private string[] requieredFatherFilds = {"FATHERFIRSTNAME","FATHERLASTNAME","FATHERPHONE"};
         new public void setData(string header, string rowData)
         {
             this.userId = findItemByHeader(header, "USERID" , rowData);
@@ -27,16 +30,19 @@ namespace School
             mother.firstname = findItemByHeader(header, "MOTHERFIRSTNAME", rowData);
             mother.lastname = findItemByHeader(header, "MOTHERLASTNAME", rowData);
             mother.phone = findItemByHeader(header, "MOTHERPHONE", rowData);
+            mother.setStudentErrorReasonsList(header, rowData, requieredMotherFilds);
             listOfParents.Add(mother);
 
             Person father = new Person();
             father.firstname = findItemByHeader(header, "FATHERFIRSTNAME", rowData);
             father.lastname = findItemByHeader(header, "FATHERLASTNAME", rowData);
             father.phone = findItemByHeader(header, "FATHERPHONE", rowData);
+            father.setStudentErrorReasonsList(header, rowData, requieredFatherFilds);
             listOfParents.Add(father);
 
             this.parent = listOfParents;  
 
+            setStudentErrorReasonsList(header, rowData, requieredFilds);
              
         }
     }

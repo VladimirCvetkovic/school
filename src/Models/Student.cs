@@ -23,7 +23,7 @@ namespace School
 
         public void setData(string header, string rowData)
         {
-            this.errorReasons = new List<string>();
+            this.invalidFields = new List<string>();
 
             this.userId = findItemByHeader(header, "USERID" , rowData);
             this.firstname = findItemByHeader(header, "FIRSTNAME", rowData);
@@ -35,17 +35,12 @@ namespace School
             this.note = findItemByHeader(header, "NOTE", rowData);
 
             Person studentParent = new Person();
-            studentParent.errorReasons = new List<string>();
+            studentParent.invalidFields = new List<string>();
             studentParent.firstname = findItemByHeader(header, "PARENTFIRSTNAME", rowData);
             studentParent.lastname = findItemByHeader(header, "PARENTLASTNAME", rowData);
             studentParent.phone = findItemByHeader(header, "PARENTPHONE", rowData);
             studentParent.setStudentErrorReasonsList(header, rowData, requieredParentFilds);
 
-            if (studentParent.errorReasons.Count > 0)
-            {
-                string errors = string.Join(",", studentParent.errorReasons.ToArray());
-                this.errorReasons.Add(errors);
-            }
             this.parent = studentParent;
 
             setStudentErrorReasonsList(header, rowData, requieredFilds);

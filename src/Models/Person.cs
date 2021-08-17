@@ -13,7 +13,7 @@ namespace School
         [Required]
         public string phone { get; set; }
 
-         public List<string> errorReasons { get; set; }
+        public List<string> invalidFields { get; set; }
 
         public void setStudentErrorReasonsList(string header, string data, string[] requieredFilds)
         {
@@ -21,17 +21,16 @@ namespace School
             for (int i = 0; i < requieredFilds.Length; i++)
             {
                 string cellData = findItemByHeader(header, requieredFilds[i], data);
-                if( cellData == "") {
-                    errorReasons.Add(requieredFilds[i]);
-                }
+                if (cellData == "") invalidFields.Add(requieredFilds[i]);
             }
         }
 
-        public string findItemByHeader(string headerNames, string header, string rowData){
+        public string findItemByHeader(string headerNames, string header, string rowData)
+        {
             string[] headers = headerNames.ToUpper().Split(",");
             string[] data = rowData.Split(",");
             int headerIndex = Array.IndexOf(headers, header);
-            if (headerIndex<0) return "";
+            if (headerIndex < 0) return "";
             else return data[headerIndex];
         }
     }

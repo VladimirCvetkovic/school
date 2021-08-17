@@ -35,9 +35,9 @@ namespace School.Controllers
                     {
                         Student student = new Student();
                         student.setData(rowData[0], rowData[i]);
-                        if (student.errorReasons.Count > 0)
+                        if (student.invalidFields.Count > 0)
                         {
-                            string errors = string.Join(",", student.errorReasons.ToArray());
+                            string errors = string.Join(",", student.invalidFields.ToArray());
                             errorData.Add("Student[" + i.ToString() + "]: Missing data for: " + errors);
                         }
                         school.users.Add(student);
