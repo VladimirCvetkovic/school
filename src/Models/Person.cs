@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace School
 {
@@ -12,7 +13,7 @@ namespace School
         public string lastname { get; set; }
         [Required]
         public string phone { get; set; }
-
+        [JsonIgnore]
         public List<string> invalidFields { get; set; }
 
         public void setInvalidFieldsList(string header, string data, string[] requieredFilds)

@@ -7,10 +7,10 @@ namespace School
 {
     public class AppService
     {
-        public async Task SaveToFile(dynamic users)
+        public async Task SaveToFile(dynamic users, string mainFolder)
         {
             var Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-            string docPath = Path.Combine(Environment.CurrentDirectory,"output");
+            string docPath = Path.Combine(Environment.CurrentDirectory, mainFolder, "output");
             string fileName = Timestamp.ToString() + ".json";
 
             if (!Directory.Exists(docPath)) Directory.CreateDirectory(docPath);

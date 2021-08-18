@@ -11,12 +11,13 @@ namespace School.Controllers
     [Route("[controller]")]
     public class PrivateScoolController : ControllerBase
     {
+        string folderName = "private scool";
         AppService appService = new AppService();
 
         [HttpPost]
         public async Task<ActionResult<PrivateStudent>> Post(PrivateSchool users)
         {
-            await appService.SaveToFile(users);
+            await appService.SaveToFile(users, folderName);
             return Ok(users);
         }
 
@@ -55,8 +56,8 @@ namespace School.Controllers
 
                 if (errorData.Count > 0) return BadRequest(errorData);
                 if (school.users.Count > 0)
-                    await appService.SaveToFile(school);
-                return Ok();
+                    await appService.SaveToFile(school, folderName);
+                return Ok(school);
             }
         }
 

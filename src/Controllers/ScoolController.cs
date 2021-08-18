@@ -12,12 +12,13 @@ namespace School.Controllers
     [Route("[controller]")]
     public class SchoolController : ControllerBase
     {
+        string folderName = "minstry scool";
         AppService appService = new AppService();
 
         [HttpPost]
         public async Task<ActionResult<Student>> Post(School users)
         {
-            await appService.SaveToFile(users);
+            await appService.SaveToFile(users, folderName);
             return Ok(users);
         }
 
@@ -25,7 +26,7 @@ namespace School.Controllers
         public async Task<IActionResult> Upload(IFormFile uploadFile)
         {
             if(uploadFile.ContentType!= "text/csv") return BadRequest("Wrong file format");
-            
+
             List<string> errorData = new List<string>();
             using (var streamReader = new StreamReader(uploadFile.OpenReadStream()))
             {
@@ -53,7 +54,7 @@ namespace School.Controllers
                     }
                 }
                 if(errorData.Count > 0) return BadRequest(errorData);
-                await appService.SaveToFile(school);
+                await appService.SaveToFile(school, folderName);
                 return Ok(school);
             }
 
