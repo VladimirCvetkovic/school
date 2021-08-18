@@ -24,7 +24,6 @@ namespace School
         public void setData(string header, string rowData)
         {
             this.invalidFields = new List<string>();
-
             this.userId = findItemByHeader(header, "USERID" , rowData);
             this.firstname = findItemByHeader(header, "FIRSTNAME", rowData);
             this.middlename = findItemByHeader(header, "MIDDLENAME", rowData);  
@@ -39,13 +38,12 @@ namespace School
             studentParent.firstname = findItemByHeader(header, "PARENTFIRSTNAME", rowData);
             studentParent.lastname = findItemByHeader(header, "PARENTLASTNAME", rowData);
             studentParent.phone = findItemByHeader(header, "PARENTPHONE", rowData);
-            studentParent.setStudentErrorReasonsList(header, rowData, requieredParentFilds);
+            studentParent.setInvalidFieldsList(header, rowData, requieredParentFilds);
 
             this.parent = studentParent;
 
-            setStudentErrorReasonsList(header, rowData, requieredFilds);
+            setInvalidFieldsList(header, rowData, requieredFilds);
         }
-
-        
+  
     }
 }

@@ -15,6 +15,7 @@ namespace School
         private string[] requieredFatherFilds = {"FATHERFIRSTNAME","FATHERLASTNAME","FATHERPHONE"};
         new public void setData(string header, string rowData)
         {
+            this.invalidFields = new List<string>();
             this.userId = findItemByHeader(header, "USERID" , rowData);
             this.firstname = findItemByHeader(header, "STUDENTFIRSTNAME", rowData);
             this.middlename = findItemByHeader(header, "STUDENTMIDDLENAME", rowData);  
@@ -23,27 +24,32 @@ namespace School
             this.studentId = findItemByHeader(header, "STUDENTID", rowData);
             this.phone = findItemByHeader(header, "STUDENTPHONE", rowData);
             this.note = findItemByHeader(header, "NOTE", rowData); 
+            this.parent = createParensData(header, rowData); 
+            if (this.parent.Count == 0) invalidFields.Add("PARENTS");
 
+            setInvalidFieldsList(header, rowData, requieredFilds);
+        }
+
+        public List<Person> createParensData(string header, string rowData){
+
+            List<string[]> parents = new List<string[]>();
             List<Person> listOfParents = new List<Person>();
 
-            Person mother = new Person();
-            mother.firstname = findItemByHeader(header, "MOTHERFIRSTNAME", rowData);
-            mother.lastname = findItemByHeader(header, "MOTHERLASTNAME", rowData);
-            mother.phone = findItemByHeader(header, "MOTHERPHONE", rowData);
-            mother.setStudentErrorReasonsList(header, rowData, requieredMotherFilds);
-            listOfParents.Add(mother);
+            parents.Add(requieredMotherFilds);
+            parents.Add(requieredFatherFilds);
 
-            Person father = new Person();
-            father.firstname = findItemByHeader(header, "FATHERFIRSTNAME", rowData);
-            father.lastname = findItemByHeader(header, "FATHERLASTNAME", rowData);
-            father.phone = findItemByHeader(header, "FATHERPHONE", rowData);
-            father.setStudentErrorReasonsList(header, rowData, requieredFatherFilds);
-            listOfParents.Add(father);
+            for (int i = 0; i < parents.Count; i++)
+            {
+                Person parent = new Person();
+                parent.invalidFields = new List<string>();
+                parent.firstname = findItemByHeader(header, parents[i].GetValue(0).ToString() , rowData);
+                parent.lastname = findItemByHeader(header, parents[i].GetValue(1).ToString(), rowData);
+                parent.phone = findItemByHeader(header, parents[i].GetValue(2).ToString() , rowData);
+                parent.setInvalidFieldsList(header, rowData, parents[i]);
+                if(parent.invalidFields.Count != 3)listOfParents.Add(parent);
+            }
 
-            this.parent = listOfParents;  
-
-            setStudentErrorReasonsList(header, rowData, requieredFilds);
-             
+            return listOfParents;
         }
     }
 }

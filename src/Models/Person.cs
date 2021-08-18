@@ -15,7 +15,7 @@ namespace School
 
         public List<string> invalidFields { get; set; }
 
-        public void setStudentErrorReasonsList(string header, string data, string[] requieredFilds)
+        public void setInvalidFieldsList(string header, string data, string[] requieredFilds)
         {
             string[] headers = header.ToUpper().Split(",");
             for (int i = 0; i < requieredFilds.Length; i++)

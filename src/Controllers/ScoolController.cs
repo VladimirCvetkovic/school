@@ -1,9 +1,10 @@
+using System;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
-using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace School.Controllers
 {
@@ -23,6 +24,8 @@ namespace School.Controllers
         [HttpPost("UploadFile")]
         public async Task<IActionResult> Upload(IFormFile uploadFile)
         {
+            if(uploadFile.ContentType!= "text/csv") return BadRequest("Wrong file format");
+            
             List<string> errorData = new List<string>();
             using (var streamReader = new StreamReader(uploadFile.OpenReadStream()))
             {
@@ -35,16 +38,23 @@ namespace School.Controllers
                     {
                         Student student = new Student();
                         student.setData(rowData[0], rowData[i]);
+
+                        if(student.parent.invalidFields.Count > 0){
+                            string errors = string.Join(",", student.parent.invalidFields.ToArray());
+                            student.invalidFields.Add(errors);
+                        }
+
                         if (student.invalidFields.Count > 0)
                         {
                             string errors = string.Join(",", student.invalidFields.ToArray());
-                            errorData.Add("Student[" + i.ToString() + "]: Missing data for: " + errors);
+                            errorData.Add("Row csv data File[" + (i + 1).ToString() + "]: Missing data for: " + errors);
                         }
                         school.users.Add(student);
                     }
                 }
+                if(errorData.Count > 0) return BadRequest(errorData);
                 await appService.SaveToFile(school);
-                return Ok();
+                return Ok(school);
             }
 
         }
